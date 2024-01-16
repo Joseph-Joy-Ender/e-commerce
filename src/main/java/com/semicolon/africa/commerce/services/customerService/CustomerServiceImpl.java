@@ -1,10 +1,9 @@
-package com.semicolon.africa.commerce.services;
+package com.semicolon.africa.commerce.services.customerService;
 
 import com.semicolon.africa.commerce.data.models.Customer;
 import com.semicolon.africa.commerce.data.models.Product;
 import com.semicolon.africa.commerce.data.models.ShoppingCart;
 import com.semicolon.africa.commerce.data.repositories.CustomerRepository;
-import com.semicolon.africa.commerce.data.repositories.ShoppingCartRepository;
 import com.semicolon.africa.commerce.dtos.LoginRequest;
 import com.semicolon.africa.commerce.dtos.RegisterCustomerRequest;
 import com.semicolon.africa.commerce.exceptions.CustomerException;
@@ -18,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private final ShoppingCartService shoppingCartService;
@@ -47,13 +46,6 @@ public class CustomerServiceImpl implements CustomerService{
             return GenerateApiResponse.loginSuccessful(GenerateApiResponse.LOGIN_SUCCESSFUL);
     }
 
-    @Override
-    public ApiResponse addToCart(Product product, String emailAddress) {
-        Customer foundCustomer = customerRepository.findByEmailAddress(emailAddress);
-
-
-        return null;
-    }
 
     @Override
     public Customer findByEmailAddress(String emailAddress) {

@@ -5,6 +5,7 @@ import com.semicolon.africa.commerce.dtos.LoginRequest;
 import com.semicolon.africa.commerce.dtos.RegisterCustomerRequest;
 import com.semicolon.africa.commerce.exceptions.CustomerException;
 import com.semicolon.africa.commerce.exceptions.InvalidDetailsException;
+import com.semicolon.africa.commerce.services.customerService.CustomerService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

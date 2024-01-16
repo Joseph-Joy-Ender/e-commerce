@@ -16,12 +16,12 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findProductByName(String productName) {
-        return productRepository.findByProductNameIgnoreCase(productName);
+    public Product findProductById(String id) {
+        return productRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Product findProductById(String id) {
-        return productRepository.findById(id).orElse(null);
+    public Product findProductByName(String name) {
+        return productRepository.findByProductNameIgnoreCase(name);
     }
 }

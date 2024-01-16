@@ -2,7 +2,6 @@ package com.semicolon.africa.commerce.services.storeService;
 
 import com.semicolon.africa.commerce.data.models.Store;
 import com.semicolon.africa.commerce.data.repositories.StoreRepository;
-import com.semicolon.africa.commerce.services.storeService.StoreService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

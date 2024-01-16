@@ -4,7 +4,7 @@ package com.semicolon.africa.commerce.services.sellerService;
 import com.semicolon.africa.commerce.data.models.Seller;
 import com.semicolon.africa.commerce.data.repositories.SellerRepository;
 import com.semicolon.africa.commerce.dtos.LoginRequest;
-import com.semicolon.africa.commerce.dtos.RegisterRequest;
+import com.semicolon.africa.commerce.dtos.RegisterSellerRequest;
 import com.semicolon.africa.commerce.exceptions.InvalidDetailsException;
 import com.semicolon.africa.commerce.exceptions.SellerException;
 import com.semicolon.africa.commerce.utils.ApiResponse;
@@ -27,9 +27,9 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public ApiResponse register(RegisterRequest registerRequest) {
-        if (checkIfUserExist(registerRequest.getEmailAddress())) throw new SellerException(GenerateApiResponse.SELLER_ALREADY_EXIST);
-        Seller seller = modelMapper.map(registerRequest, Seller.class);
+    public ApiResponse register(RegisterSellerRequest registerSellerRequest) {
+        if (checkIfUserExist(registerSellerRequest.getEmailAddress())) throw new SellerException(GenerateApiResponse.SELLER_ALREADY_EXIST);
+        Seller seller = modelMapper.map(registerSellerRequest, Seller.class);
         sellerRepository.save(seller);
         return GenerateApiResponse.created(GenerateApiResponse.SELLER_SUCCESSFULLY_REGISTERED);
     }

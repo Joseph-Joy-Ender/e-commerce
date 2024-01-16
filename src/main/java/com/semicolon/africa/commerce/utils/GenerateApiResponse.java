@@ -20,6 +20,7 @@ public class GenerateApiResponse {
     public static final String CUSTOMER_NOT_FOUND = "Customer not found";
     public static final String PRODUCT_NOT_FOUND = "Product is not found";
     public static final String PRODUCT_SUCCESSFULLY_ADDED_TO_CART = "Product successfully added to cart";
+    public static final String FILL_ALL_FIELDS_CORRECTLY = "Kindly fill all fields correctly";
 
     public static ApiResponse created(Object data) {
                return ApiResponse.builder()
@@ -55,5 +56,15 @@ public class GenerateApiResponse {
                 .statusCode(HttpStatus.OK.value())
                 .isSuccessful(true)
                 .build();
+    }
+
+    public static ApiResponse view(Object data) {
+        return ApiResponse.builder()
+                .data(data)
+                .httpStatus(HttpStatus.OK)
+                .statusCode(HttpStatus.OK.value())
+                .isSuccessful(true)
+                .build();
+
     }
 }

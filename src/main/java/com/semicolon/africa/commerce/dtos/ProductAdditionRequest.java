@@ -9,7 +9,7 @@ public class ProductAdditionRequest {
     private String productName;
     private BigDecimal price;
     private String productDescription;
-    private String ProductCategory;
+    private String category;
     private String sellerEmailAddress;
 
 }

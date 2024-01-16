@@ -1,8 +1,10 @@
 package com.semicolon.africa.commerce.exceptions;
 
 import com.semicolon.africa.commerce.utils.ApiResponse;
+import com.semicolon.africa.commerce.utils.GenerateApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -68,4 +70,15 @@ public class GlobalExceptionHandler {
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiResponse> validateInputException(){
+        return new ResponseEntity<>(ApiResponse.builder()
+                .data(GenerateApiResponse.FILL_ALL_FIELDS_CORRECTLY)
+                .httpStatus(HttpStatus.BAD_REQUEST)
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .isSuccessful(false)
+                .build(), HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -1,25 +1,30 @@
 package com.semicolon.africa.commerce.controller;
 
+import com.semicolon.africa.commerce.dtos.AddItemToCartRequest;
 import com.semicolon.africa.commerce.dtos.LoginRequest;
 import com.semicolon.africa.commerce.dtos.RegisterCustomerRequest;
-import com.semicolon.africa.commerce.dtos.RegisterRequest;
 import com.semicolon.africa.commerce.exceptions.CustomerException;
-import com.semicolon.africa.commerce.services.CustomerService;
+import com.semicolon.africa.commerce.services.cartService.ViewCartService;
+import com.semicolon.africa.commerce.services.customerService.CustomerService;
+import com.semicolon.africa.commerce.services.cartService.CartAdditionService;
 import com.semicolon.africa.commerce.utils.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/e-commerce/")
+@CrossOrigin(origins = "*")
 @AllArgsConstructor
 public class CustomerController {
     private final CustomerService customerService;
+    private final CartAdditionService additionService;
+    private final ViewCartService viewCartService;
 
     @PostMapping("registerCustomer")
-    public ResponseEntity<ApiResponse> registerCustomer(@RequestBody RegisterCustomerRequest registerRequest) throws CustomerException {
+    public ResponseEntity<ApiResponse> registerCustomer(@RequestBody @Valid RegisterCustomerRequest registerRequest) throws CustomerException {
         return new ResponseEntity<>(customerService.register(registerRequest), HttpStatus.CREATED);
     }
 
@@ -27,4 +32,16 @@ public class CustomerController {
     public ResponseEntity<ApiResponse> loginCustomer(@RequestBody LoginRequest loginRequest){
         return new ResponseEntity<>(customerService.login(loginRequest), HttpStatus.OK);
     }
+
+    @PostMapping("addToCustomersCart")
+    public ResponseEntity<ApiResponse> addToCustomersCart(@RequestBody @Valid AddItemToCartRequest addItemToCartRequest) throws CustomerException {
+        return new ResponseEntity<>(additionService.addToCustomersCart(addItemToCartRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping("viewCart/{emailAddress}")
+    public ResponseEntity<ApiResponse> viewCart(@PathVariable String emailAddress) throws CustomerException {
+        return new ResponseEntity<>(viewCartService.viewCart(emailAddress), HttpStatus.OK);
+    }
+
+
 }

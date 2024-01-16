@@ -1,10 +1,10 @@
 package com.semicolon.africa.commerce.services.productService;
 
 import com.semicolon.africa.commerce.data.models.Product;
+import com.semicolon.africa.commerce.data.models.ProductCategory;
 import com.semicolon.africa.commerce.data.models.Seller;
 import com.semicolon.africa.commerce.data.models.Store;
 import com.semicolon.africa.commerce.dtos.ProductAdditionRequest;
-import com.semicolon.africa.commerce.exceptions.ProductException;
 import com.semicolon.africa.commerce.exceptions.SellerException;
 import com.semicolon.africa.commerce.exceptions.StoreException;
 import com.semicolon.africa.commerce.services.sellerService.SellerService;
@@ -49,9 +49,10 @@ public class ProductAdditionService {
     }
 
     private Product getNewlyCreatedAndSavedProduct(Seller seller, ProductAdditionRequest productAdditionRequest) {
-       List<Product> foundList = seller.getStore().getProducts().stream().filter(product -> product.getProductName().equalsIgnoreCase(productAdditionRequest.getProductName())).toList();
-       if(!foundList.isEmpty()) throw new ProductException(GenerateApiResponse.PRODUCT_EXIST);
+
         Product product = modelMapper.map(productAdditionRequest, Product.class);
+        product.setCategory(ProductCategory.valueOf(productAdditionRequest.getCategory().toUpperCase()));
+
         return productService.save(product);
     }
 
