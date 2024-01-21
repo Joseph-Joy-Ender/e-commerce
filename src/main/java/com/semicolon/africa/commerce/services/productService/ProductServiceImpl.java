@@ -1,6 +1,7 @@
 package com.semicolon.africa.commerce.services.productService;
 
 import com.semicolon.africa.commerce.data.models.Product;
+import com.semicolon.africa.commerce.data.models.ProductCategory;
 import com.semicolon.africa.commerce.data.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public Product findProductByName(String name) {
         return productRepository.findByProductNameIgnoreCase(name);
+    }
+
+    @Override
+    public Product findProductByCategory(ProductCategory category) {
+        return productRepository.findProductByCategory(category);
     }
 }

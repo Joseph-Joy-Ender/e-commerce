@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.semicolon.africa</groupId>
-	<artifactId>commerce</artifactId>
+	<artifactId>e-commerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>commerce</name>
 	<description>commerce project for Spring Boot</description>

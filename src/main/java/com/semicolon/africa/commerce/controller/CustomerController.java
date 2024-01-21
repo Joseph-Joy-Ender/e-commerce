@@ -1,5 +1,6 @@
 package com.semicolon.africa.commerce.controller;
 
+import com.semicolon.africa.commerce.data.models.ProductCategory;
 import com.semicolon.africa.commerce.dtos.AddItemToCartRequest;
 import com.semicolon.africa.commerce.dtos.LoginRequest;
 import com.semicolon.africa.commerce.dtos.RegisterCustomerRequest;
@@ -7,6 +8,7 @@ import com.semicolon.africa.commerce.exceptions.CustomerException;
 import com.semicolon.africa.commerce.services.cartService.ViewCartService;
 import com.semicolon.africa.commerce.services.customerService.CustomerService;
 import com.semicolon.africa.commerce.services.cartService.CartAdditionService;
+import com.semicolon.africa.commerce.services.productService.SearchProductsByNameService;
 import com.semicolon.africa.commerce.utils.ApiResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ public class CustomerController {
     private final CustomerService customerService;
     private final CartAdditionService additionService;
     private final ViewCartService viewCartService;
+    private final SearchProductsByNameService productsByNameService;
 
     @PostMapping("registerCustomer")
     public ResponseEntity<ApiResponse> registerCustomer(@RequestBody @Valid RegisterCustomerRequest registerRequest) throws CustomerException {
@@ -29,7 +32,7 @@ public class CustomerController {
     }
 
     @PostMapping("loginCustomer")
-    public ResponseEntity<ApiResponse> loginCustomer(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<ApiResponse> loginCustomer(@RequestBody @Valid LoginRequest loginRequest){
         return new ResponseEntity<>(customerService.login(loginRequest), HttpStatus.OK);
     }
 
@@ -39,8 +42,13 @@ public class CustomerController {
     }
 
     @GetMapping("viewCart/{emailAddress}")
-    public ResponseEntity<ApiResponse> viewCart(@PathVariable String emailAddress) throws CustomerException {
+    public ResponseEntity<ApiResponse> viewCart(@PathVariable String emailAddress) {
         return new ResponseEntity<>(viewCartService.viewCart(emailAddress), HttpStatus.OK);
+    }
+
+    @GetMapping("searchProductsByName{category}")
+    public ResponseEntity<ApiResponse> searchProductsByName(@PathVariable ProductCategory category){
+        return new ResponseEntity<>(productsByNameService.searchProductsByName(category), HttpStatus.FOUND);
     }
 
 
