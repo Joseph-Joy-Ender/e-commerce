@@ -1,7 +1,6 @@
 package com.semicolon.africa.commerce.services.customerService;
 
 import com.semicolon.africa.commerce.data.models.Customer;
-import com.semicolon.africa.commerce.data.models.Product;
 import com.semicolon.africa.commerce.data.models.ShoppingCart;
 import com.semicolon.africa.commerce.data.repositories.CustomerRepository;
 import com.semicolon.africa.commerce.dtos.LoginRequest;

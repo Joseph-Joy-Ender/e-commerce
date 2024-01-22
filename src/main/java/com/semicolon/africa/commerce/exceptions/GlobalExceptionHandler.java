@@ -1,6 +1,6 @@
 package com.semicolon.africa.commerce.exceptions;
 
-import com.semicolon.africa.commerce.utils.ApiResponse;
+import com.semicolon.africa.commerce.utils.ExceptionApiResponse;
 import com.semicolon.africa.commerce.utils.GenerateApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,71 +12,58 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(SellerException.class)
-    public ResponseEntity<ApiResponse> userException(SellerException sellerException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> userException(SellerException sellerException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(sellerException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
+
     }
 
     @ExceptionHandler(InvalidDetailsException.class)
-    public ResponseEntity<ApiResponse> invalidDetails(InvalidDetailsException invalidDetailsException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> invalidDetails(InvalidDetailsException invalidDetailsException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(invalidDetailsException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(StoreException.class)
-    public ResponseEntity<ApiResponse> storeExist(StoreException storeException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> storeExist(StoreException storeException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(storeException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ProductException.class)
-    public ResponseEntity<ApiResponse> productExist(ProductException productException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> productExist(ProductException productException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(productException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(CartException.class)
-    public ResponseEntity<ApiResponse> customerNotFound(CartException cartException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> customerNotFound(CartException cartException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(cartException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(CustomerException.class)
-    public ResponseEntity<ApiResponse> customerException(CustomerException customerException){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> customerException(CustomerException customerException){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(customerException.getMessage())
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiResponse> validateInputException(){
-        return new ResponseEntity<>(ApiResponse.builder()
+    public ResponseEntity<ExceptionApiResponse> validateInputException(){
+        return new ResponseEntity<>(ExceptionApiResponse.builder()
                 .data(GenerateApiResponse.FILL_ALL_FIELDS_CORRECTLY)
-                .httpStatus(HttpStatus.BAD_REQUEST)
-                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .isSuccessful(false)
                 .build(), HttpStatus.BAD_REQUEST);
     }
