@@ -9,4 +9,5 @@ public interface ProductService {
     Product findProductByName(String name);
     Product findProductByCategory(ProductCategory category);
 
+    Object findAll();
 }

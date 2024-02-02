@@ -20,6 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private final ShoppingCartService shoppingCartService;
+   // private  PasswordEncoder passwordEncoder;
 
     @Override
     public Customer save(Customer customer) {
