@@ -1,8 +1,6 @@
 package com.semicolon.africa.commerce.dtos;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,8 +10,7 @@ public class ProductAdditionRequest {
     @NotEmpty
     @NotBlank
     private String productName;
-    @NotEmpty
-    @NotBlank
+    @Positive
     private BigDecimal price;
     @NotEmpty
     @NotBlank
@@ -24,6 +21,7 @@ public class ProductAdditionRequest {
     @NotEmpty
     @NotBlank
     @Email
+    @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
     private String sellerEmailAddress;
 
 }

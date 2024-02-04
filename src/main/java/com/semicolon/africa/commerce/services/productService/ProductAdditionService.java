@@ -51,7 +51,7 @@ public class ProductAdditionService {
     private Product getNewlyCreatedAndSavedProduct(Seller seller, ProductAdditionRequest productAdditionRequest) {
 
         Product product = modelMapper.map(productAdditionRequest, Product.class);
-        product.setCategory(ProductCategory.valueOf(productAdditionRequest.getCategory().toUpperCase()));
+        product.setCategory(String.valueOf(ProductCategory.valueOf(productAdditionRequest.getCategory().toUpperCase())));
 
         return productService.save(product);
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ViewProductService {
+public class ViewAllProductService {
    private SellerService sellerService;
 
     public ApiResponse viewAllProduct(String emailAddress){

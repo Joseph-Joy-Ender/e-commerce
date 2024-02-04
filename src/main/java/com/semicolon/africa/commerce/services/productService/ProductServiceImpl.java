@@ -6,6 +6,8 @@ import com.semicolon.africa.commerce.data.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService{
@@ -17,19 +19,26 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product findProductById(String id) {
-        return productRepository.findById(id).orElse(null);
+    public Product findProductByProductName(String name) {
+        return productRepository.findProductByProductNameIgnoreCase(name);
+    }
+
+
+    @Override
+    public List<Product> findProductByName(String productName) {
+        return productRepository.findByProductNameContainingIgnoreCase(productName);
     }
 
     @Override
-    public Product findProductByName(String name) {
-        return productRepository.findByProductNameIgnoreCase(name);
+    public Product deleteProduct(String productName) {
+        return productRepository.deleteProductByProductNameIgnoreCase(productName);
     }
 
     @Override
-    public Product findProductByCategory(ProductCategory category) {
-        return productRepository.findProductByCategory(category);
+    public List<Product> findProductByCategory(String category) {
+        return productRepository.findProductByCategoryIgnoreCase(category);
     }
+
 
     @Override
     public Object findAll() {
