@@ -37,6 +37,7 @@ public class CartAdditionService {
         listOfProducts.add(product);
 
         shoppingCart.setProducts(new ArrayList<>(listOfProducts));
+
         ShoppingCart updatedShoppingCart = cartService.save(shoppingCart);
 
         customer.setShoppingCart(updatedShoppingCart);

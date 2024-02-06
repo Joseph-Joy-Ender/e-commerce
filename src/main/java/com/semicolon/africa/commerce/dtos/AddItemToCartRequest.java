@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 public class AddItemToCartRequest {
     @Positive
-    private BigDecimal quantity;
+    private int quantity;
     @Email
     @Pattern(regexp =  "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
     private String emailAddress;

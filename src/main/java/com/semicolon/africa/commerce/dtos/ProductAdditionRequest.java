@@ -23,5 +23,6 @@ public class ProductAdditionRequest {
     @Email
     @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")
     private String sellerEmailAddress;
+    private int quantity;
 
 }

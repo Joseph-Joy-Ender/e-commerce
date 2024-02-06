@@ -32,7 +32,7 @@ public class ProductAdditionService {
         Store store = seller.getStore();
         if (seller.getStore() == null) throw new StoreException(GenerateApiResponse.STORE_NOT_CREATED);
 
-        Product savedProduct = getNewlyCreatedAndSavedProduct(seller, productAdditionRequest);
+        Product savedProduct = getNewlyCreatedAndSavedProduct(productAdditionRequest);
         List<Product> foundListOfProducts = getListOfProductsFromExistingStore(store);
         savingStoreToSeller(foundListOfProducts, savedProduct, store, seller);
 
@@ -48,7 +48,7 @@ public class ProductAdditionService {
         sellerService.save(seller);
     }
 
-    private Product getNewlyCreatedAndSavedProduct(Seller seller, ProductAdditionRequest productAdditionRequest) {
+    private Product getNewlyCreatedAndSavedProduct(ProductAdditionRequest productAdditionRequest) {
 
         Product product = modelMapper.map(productAdditionRequest, Product.class);
         product.setCategory(String.valueOf(ProductCategory.valueOf(productAdditionRequest.getCategory().toUpperCase())));
