@@ -3,9 +3,11 @@ package com.semicolon.africa.commerce.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-@ComponentScan
+//@ComponentScan
 @Configuration
+@EnableWebSecurity
 
 public class SecurityConfig {
 
@@ -21,7 +23,7 @@ public class SecurityConfig {
 
 
 //    @Autowired
-//    private UserDetailsService userDetailsService;
+//    private UserDetailsService;
 //
 //    @Bean
 //    public DaoAuthenticationProvider authProvider() {
