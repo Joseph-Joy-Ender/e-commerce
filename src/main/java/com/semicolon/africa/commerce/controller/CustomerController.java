@@ -42,7 +42,7 @@ public class CustomerController {
 
     @PostMapping("addToCart")
     public ResponseEntity<ApiResponse> addToCustomersCart(@RequestBody @Valid AddItemToCartRequest addItemToCartRequest) throws CustomerException {
-        return new ResponseEntity<>(additionService.addToCustomersCart(addItemToCartRequest), HttpStatus.CREATED);
+        return new ResponseEntity<>(additionService.addToCustomerCart(addItemToCartRequest), HttpStatus.CREATED);
     }
 
     @GetMapping("viewCart/{emailAddress}")

@@ -23,7 +23,7 @@ public class CartAdditionService {
     private final ProductService productService;
     private final ShoppingCartService cartService;
 
-    public ApiResponse addToCustomersCart(AddItemToCartRequest addItemToCartRequest) throws CustomerException {
+    public ApiResponse addToCustomerCart(AddItemToCartRequest addItemToCartRequest) throws CustomerException {
         Customer customer = customerService.findByEmailAddress(addItemToCartRequest.getEmailAddress());
         if (customer == null) throw new CustomerException(GenerateApiResponse.CUSTOMER_NOT_FOUND);
         Product product = productService.findProductByProductName(addItemToCartRequest.getProductName());

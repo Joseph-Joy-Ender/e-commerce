@@ -21,6 +21,7 @@ public class RegisterCustomerRequest {
     private String emailAddress;
     @NotBlank
     @NotEmpty
+    @Pattern(regexp = "[1-9]\\\\d{2}-[1-9]\\\\d{2}-\\\\d{4}")
     private String phoneNumber;
     @NotEmpty
     @NotBlank

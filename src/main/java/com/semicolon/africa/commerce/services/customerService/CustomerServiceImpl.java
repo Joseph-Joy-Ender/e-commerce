@@ -12,6 +12,7 @@ import com.semicolon.africa.commerce.utils.ApiResponse;
 import com.semicolon.africa.commerce.utils.GenerateApiResponse;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,6 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final ModelMapper modelMapper;
     private final ShoppingCartService shoppingCartService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Customer save(Customer customer) {
@@ -29,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     public ApiResponse register(RegisterCustomerRequest registerCustomerRequest) throws CustomerException {
         if (checkIfCustomerExist(registerCustomerRequest.getEmailAddress())) throw new CustomerException(GenerateApiResponse.CUSTOMER_ALREADY_EXIST);
         Customer customer = modelMapper.map(registerCustomerRequest, Customer.class);
-      //  customer.setPassword(passwordEncoder.encode(registerCustomerRequest.getPassword()));
+        customer.setPassword(passwordEncoder.encode(registerCustomerRequest.getPassword()));
         ShoppingCart cart = new ShoppingCart();
         ShoppingCart savedCart = shoppingCartService.save(cart);
         customer.setShoppingCart(savedCart);
