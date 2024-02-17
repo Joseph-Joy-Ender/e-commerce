@@ -22,6 +22,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public List<ShoppingCart> findAll() {
         return shoppingCartRepository.findAll();
     }
+
+//    @Override
+//    public void deleteProduct(String productName) {
+//        shoppingCartRepository
+//    }
 }
 
 

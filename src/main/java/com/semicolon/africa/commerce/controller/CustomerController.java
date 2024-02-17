@@ -60,10 +60,10 @@ public class CustomerController {
         return new ResponseEntity<>(productsByNameService.searchByName(productName), HttpStatus.FOUND);
     }
 
-    @DeleteMapping("deleteProductByName/{productName}")
-    public ResponseEntity<ApiResponse> deleteProducts(@PathVariable String productName){
-        return new ResponseEntity<>(deleteFromCartService.deleteProduct(productName), HttpStatus.OK);
-    }
+//    @DeleteMapping("deleteProductByName/{productName}")
+//    public ResponseEntity<ApiResponse> deleteProducts(@PathVariable String productName){
+//        return new ResponseEntity<>(deleteFromCartService.deleteProduct(productName), HttpStatus.OK);
+//    }
 
 
 

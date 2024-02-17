@@ -8,4 +8,6 @@ public interface ShoppingCartService {
     ShoppingCart save(ShoppingCart shoppingCart);
 
     List<ShoppingCart> findAll();
+
+  //  void deleteProduct(String productName);
 }
