@@ -21,13 +21,14 @@ public class DeleteFromCartService {
     private final CustomerService customerService;
 
     public ApiResponse deleteProduct(String productName, String emailAddress){
-        Customer customer = customerService.findByEmailAddress(emailAddress);
-        ShoppingCart cart = customer.getShoppingCart();
-        List<Product> products = cart.getProducts();
-         products.remove(productService.findProductByProductName(productName));
+
+//        Customer = customerService.findByEmailAddress(emailAddress);
+//        ShoppingCart cart = customer.getShoppingCart();
+//        List<Product> products = cart.getProducts();
+//         products.remove(productService.findProductByProductName(productName));
        // shoppingCartService.deleteProduct(productName);
       //  ShoppingCart = shoppingCartService
-//        Product = productService.findProductByProductName(productName);
+//        Product product = productService.findProductByProductName(productName);
 //        if (product == null) throw new ProductException(GenerateApiResponse.PRODUCT_NOT_FOUND);
 //        productService.deleteProduct(productName);
         return GenerateApiResponse.view(GenerateApiResponse.PRODUCT_DELETED);

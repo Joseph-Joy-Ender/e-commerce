@@ -1,14 +1,13 @@
 package com.semicolon.africa.commerce.controller;
 
-import com.semicolon.africa.commerce.data.models.ProductCategory;
 import com.semicolon.africa.commerce.dtos.AddItemToCartRequest;
 import com.semicolon.africa.commerce.dtos.LoginRequest;
 import com.semicolon.africa.commerce.dtos.RegisterCustomerRequest;
 import com.semicolon.africa.commerce.exceptions.CustomerException;
+import com.semicolon.africa.commerce.services.cartService.CartAdditionService;
 import com.semicolon.africa.commerce.services.cartService.DeleteFromCartService;
 import com.semicolon.africa.commerce.services.cartService.ViewCartService;
 import com.semicolon.africa.commerce.services.customerService.CustomerService;
-import com.semicolon.africa.commerce.services.cartService.CartAdditionService;
 import com.semicolon.africa.commerce.services.productService.SearchProductsByCategoryService;
 import com.semicolon.africa.commerce.services.productService.SearchProductsByNameService;
 import com.semicolon.africa.commerce.utils.ApiResponse;

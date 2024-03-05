@@ -29,7 +29,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
     @Override
     public ApiResponse register(RegisterCustomerRequest registerCustomerRequest) throws CustomerException {
-        if (checkIfCustomerExist(registerCustomerRequest.getEmailAddress())) throw new CustomerException(GenerateApiResponse.CUSTOMER_ALREADY_EXIST);
+       if (customerRepository.existsByEmailAddress(registerCustomerRequest.getEmailAddress())) {
+           throw new CustomerException(GenerateApiResponse.CUSTOMER_ALREADY_EXIST);
+       }
         Customer customer = modelMapper.map(registerCustomerRequest, Customer.class);
         customer.setPassword(passwordEncoder.encode(registerCustomerRequest.getPassword()));
         ShoppingCart cart = new ShoppingCart();
@@ -60,6 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer foundCustomer = customerRepository.findByEmailAddress(emailAddress);
         return foundCustomer != null;
     }
+
 
 
 

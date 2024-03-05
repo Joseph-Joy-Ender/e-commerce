@@ -13,7 +13,7 @@ class DeleteFromCartServiceTest {
 
     @Test
     public void customerCanDeleteFromCart(){
-        String productName = "Stockings";
+        String productName = "Frying pan";
         String emailAddress = "joy828545@Gmail.com";
        // deleteFromCartService.deleteProduct(productName, emailAddress);
         assertEquals(GenerateApiResponse.view(GenerateApiResponse.PRODUCT_DELETED).getHttpStatus(), deleteFromCartService.deleteProduct(productName, emailAddress).getHttpStatus());
